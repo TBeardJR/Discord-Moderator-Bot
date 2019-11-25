@@ -2,6 +2,9 @@
     "compilerOptions": {
         "target": "esnext",
         "module": "commonjs",
+        "types": [
+            "node"
+        ],
         "watch": false,
         "sourceMap": false,
         "inlineSourceMap": true,
@@ -14,6 +17,7 @@
     "exclude": [
         "./src/tests/**/*",
         "./src/__mocks__/",
-        "./src/mocks/**/*"
+        "./src/mocks/**/*",
+        "src/**/*.test.ts"
     ]
 }
