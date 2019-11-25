@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "moderator bot for discord",
   "scripts": {
-    "start": "node out/commando-client.js",
+    "start": "npm run tsc && node out/commando-client.js",
     "pm2": "pm2 start out/commando-client.js --name discord-bot -i 0",
-    "test": "jest"
+    "test": "jest",
+    "tsc": "tsc"
   },
   "author": "Tarence Beard Jr.",
   "license": "ISC",
