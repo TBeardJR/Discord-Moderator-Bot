@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "esnext",
         "module": "commonjs",
-        "watch": true,
+        "watch": false,
         "sourceMap": false,
         "inlineSourceMap": true,
         "inlineSources": true,
