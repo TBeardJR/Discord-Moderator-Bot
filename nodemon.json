@@ -1,0 +1,15 @@
+{
+    "restartable": "rs",
+    "ignore": [
+      ".git",
+      "node_modules/**/node_modules"
+    ],
+    "verbose": false,
+    "execMap": {
+      "js": "node out/commando-client.js"
+    },
+    "watch": [
+      "out/"
+    ],
+    "ext": "js,json"
+  }

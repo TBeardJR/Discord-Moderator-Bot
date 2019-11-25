@@ -1,0 +1,15 @@
+import { DBParam } from "../types/types";
+
+export const SAVE_TIMEOUT = `INSERT INTO Timeout (MEMBER_ID, GUILD_ID, DURATION, END_DATE) VALUES(?,?,?,?)`;
+export const REMOVE_TIMEOUT = `DELETE FROM Timeout WHERE MEMBER_ID = ? AND GUILD_ID = ?`;
+export const REMOVE_ALL_TIMEOUTS_FOR_GUILD = `DELETE FROM Timeout WHERE GUILD_ID = ?`;
+export const GET_TIMEOUT_FOR_MEMBER_BY_GUILD = `SELECT * FROM Timeout WHERE MEMBER_ID = ? AND GUILD_ID = ?`;
+export const GET_ALL_TIMEOUTS = `SELECT * FROM Timeout`;
+export const GET_ALL_TIMEOUTS_FOR_GUILD = `SELECT * FROM Timeout WHERE GUILD_ID = ?`;
+export const GET_TIMEOUT_ROLE_ID_FOR_GUILD = `SELECT TIMEOUT_ROLE_ID FROM Guild WHERE ID = ?`
+export const REMOVE_GUILD = `DELETE FROM Guild WHERE ID = ?`
+export const SAVE_GUILD_ID = `INSERT INTO Guild (ID) VALUES(?)`
+export const GET_CHANNEL_PERMISSIONS = `SELECT * FROM ChannelPermissions WHERE MEMBER_ID = ? AND GUILD_ID = ?`
+export const REMOVE_CHANNEL_PERMISSIONS = `DELETE FROM ChannelPermissions WHERE MEMBER_ID = ? AND GUILD_ID = ?`
+export const SAVE_CHANNEL_PERMISSIONS = `INSERT INTO ChannelPermissions (GUILD_ID, GUILD_CHANNEL_ID, MEMBER_ID, PERMISSIONS) VALUES ?`
+export const REMOVE_CHANNEL_PERMISSIONS_FOR_GUILD = `DELETE FROM ChannelPermissions where guild_id = ?`
