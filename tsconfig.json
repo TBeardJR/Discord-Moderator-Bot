@@ -3,7 +3,8 @@
         "target": "esnext",
         "module": "commonjs",
         "types": [
-            "node"
+            "node",
+            "jest"
         ],
         "watch": false,
         "sourceMap": false,
