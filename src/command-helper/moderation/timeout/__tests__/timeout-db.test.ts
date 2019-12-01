@@ -9,10 +9,14 @@ const today = new Date();
 
 jest.mock("../../../../discord/guild");
 
+
 const setupMock = (returnValue) => {
     jest.doMock("../../../../database/database", () => {
         return {
-            query: jest.fn().mockImplementation(() => returnValue)
+            query: jest.fn().mockImplementation(() => returnValue),
+            onDBConnection$: {
+                subscribe: jest.fn()
+            }
         }
     })
 
