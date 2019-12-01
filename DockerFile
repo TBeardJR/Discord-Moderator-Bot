@@ -1,0 +1,29 @@
+FROM node:12-alpine
+
+RUN apk add --update tini
+
+# Crate separate directory for node_module installation to avoid being overwritten by the bind mount
+RUN mkdir install
+
+COPY package.json package-lock.json ./install/
+WORKDIR /install
+RUN npm ci --prod && npm cache clean --force
+RUN npm install nodemon -g
+
+# Set new location for node to lookup dependencies in node_modules
+ENV NODE_PATH=/install/node_modules
+
+
+RUN mkdir -p /usr/src/app/out
+WORKDIR /usr/src/app
+COPY out/ ./out
+COPY nodemon.json ./
+
+
+
+CMD nodemon out/commando-client.js -L --config nodemon.json
+
+#CMD ["/sbin/tini", "--", "node", "out/commando-client.js"]
+
+
+

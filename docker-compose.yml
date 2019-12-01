@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'mysql-db'
+      MYSQL_USER: 'localuser'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '1337:3306'
+    volumes:
+      - mysql-db:/var/lib/mysql
+
+  discord:
+    image: my-image
+    build:
+      context: .
+      dockerfile: DockerFile
+    restart: on-failure
+    environment: 
+      DB_USER: 'localuser'
+      DB_PASSWORD: 'password'
+      DB_HOST: 'mysql'
+      DB_NAME: 'mysql-db'
+      PORT: '3306'
+      DISCORD_TOKEN:
+      DISCORD_BOT_OWNER: 
+    volumes:
+      - ./out:/usr/src/app/out
+volumes:
+  mysql-db:
+    
+    

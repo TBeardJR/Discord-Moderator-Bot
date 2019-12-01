@@ -1,0 +1,17 @@
+FROM node:12-alpine
+
+RUN apk add --update tini
+
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+COPY out/ .
+COPY package.json package-lock.json ./
+
+RUN npm ci --prod && npm cache clean --force
+
+CMD ["/sbin/tini", "--", "node", "commando-client.js"]
+
+
+
