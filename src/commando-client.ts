@@ -7,7 +7,7 @@ import { CancelTimeoutCommand, createOnCancelTimeoutObservable } from './command
 import { isBotStillInGuild } from './discord/guild';
 import { InfoCommand } from './commands/misc/info';
 import { TimeoutStatsCommand } from './commands/moderation/timeout-stats';
-import { onDBConnection$ } from './database/database'
+import { onDBConnection$, testDBConnection } from './database/database'
 import { CancelAllTimeoutsCommand } from './commands/moderation/cancel-all-timeouts';
 import { CommandInfoCommand } from './commands/misc/commands';
 
@@ -26,6 +26,8 @@ client.registry
     .registerDefaultGroups()
     .registerDefaultTypes()
     .registerCommands([TimeoutCommand, CancelTimeoutCommand, TimeoutStatsCommand, CancelAllTimeoutsCommand, InfoCommand, CommandInfoCommand])
+
+testDBConnection();
    
 onDBConnection$.subscribe({
     next: () => {

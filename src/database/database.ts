@@ -14,15 +14,17 @@ const connectionInfo = {
     port: +process.env.PORT
 }
 
-let dbconnection = createConnection(connectionInfo); 
+export const testDBConnection = () => {
+    createConnection(connectionInfo).connect((error) => {
+        if (!error) {
+            onDBConnection.next();
+        } else {
+            onDBConnection.error(error);
+        }
+    });
+}
 
-dbconnection.connect((error) => {
-    if (!error) {
-        onDBConnection.next();
-    } else {
-        onDBConnection.error(error);
-    }
-});
+
 
 const pool = createPool(connectionInfo);
 
