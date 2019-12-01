@@ -1,5 +1,3 @@
-import { DBParam } from "../types/types";
-
 export const SAVE_TIMEOUT = `INSERT INTO Timeout (MEMBER_ID, GUILD_ID, DURATION, END_DATE) VALUES(?,?,?,?)`;
 export const REMOVE_TIMEOUT = `DELETE FROM Timeout WHERE MEMBER_ID = ? AND GUILD_ID = ?`;
 export const REMOVE_ALL_TIMEOUTS_FOR_GUILD = `DELETE FROM Timeout WHERE GUILD_ID = ?`;

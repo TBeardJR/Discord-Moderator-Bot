@@ -16,7 +16,8 @@ const setupMock = (returnValue) => {
             query: jest.fn().mockImplementation(() => returnValue),
             onDBConnection$: {
                 subscribe: jest.fn()
-            }
+            },
+            testDBConnection: jest.fn()
         }
     })
 
